@@ -42,8 +42,8 @@ kill -s 9 $ncPID
 sleep 1
 clear
 
-diff <(head -n 10 ./result/window_top.txt) <(head -n 10 ./result/expected_window.txt) > windowDiff
-diff <(head -n 10 ./result/global_top.txt) <(head -n 10 ./result/expected_global.txt) > globalDiff
+diff <(head -n 10 ./result/window_top.txt) <(head -n 10 ./result/expected_window.txt) > ./result/windowDiff
+diff <(head -n 10 ./result/global_top.txt) <(head -n 10 ./result/expected_global.txt) > ./result/globalDiff
 
 windowDiffExist=`wc -l < './result/windowDiff'`
 globalDiffExist=`wc -l < './result/globalDiff'`
