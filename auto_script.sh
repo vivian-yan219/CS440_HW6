@@ -2,10 +2,10 @@
 
 rm -rf ./checkpoint_topk
 
-rm ./result/global_top.txt
-touch ./result/global_top.txt
-rm ./result/window_top.txt
-touch ./result/window_top.txt
+rm ./result/task2.txt
+touch ./result/task2.txt
+rm ./result/task1.txt
+touch ./result/task1.txt
 
 rm ./result/windowDiff
 rm ./result/globalDiff
@@ -21,7 +21,7 @@ echo $serverPID
 ncPID=$!
 
 declare -i timeCount=0
-ln=`wc -l < './result/window_top.txt'`
+ln=`wc -l < './result/task1.txt'`
 while [ $ln -lt 10 ]
 do
 	timeCount+=1
@@ -30,7 +30,7 @@ do
 		break
 	fi
 
-	ln=`wc -l < './result/window_top.txt'`
+	ln=`wc -l < './result/task1.txt'`
 	sleep 1
 done
 
@@ -42,8 +42,8 @@ kill -s 9 $ncPID
 sleep 1
 clear
 
-diff <(head -n 10 ./result/window_top.txt) <(head -n 10 ./result/expected_window.txt) > ./result/windowDiff
-diff <(head -n 10 ./result/global_top.txt) <(head -n 10 ./result/expected_global.txt) > ./result/globalDiff
+diff <(head -n 10 ./result/task1.txt) <(head -n 10 ./result/expected1.txt) > ./result/windowDiff
+diff <(head -n 10 ./result/task2.txt) <(head -n 10 ./result/expected2.txt) > ./result/globalDiff
 
 windowDiffExist=`wc -l < './result/windowDiff'`
 globalDiffExist=`wc -l < './result/globalDiff'`
