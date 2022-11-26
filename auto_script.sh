@@ -15,8 +15,13 @@ touch ./result/globalDiff
 python3 main.py &
 sleep 6
 serverPID=$!
-echo $serverPID
-./input/read_file.sh | nc -l -p 9009 &
+
+if [ $# -eq 0 ];
+then
+	./input/read_file.sh | nc -l -p 9009 &
+else
+	./input/read_file.sh | nc -l -p $1 &
+fi
 
 ncPID=$!
 
