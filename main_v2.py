@@ -1,6 +1,6 @@
 ##############################################
 ##
-##  CS440 Project 4
+##  CS440 HW6
 ##  
 ##  Important: fill you name and PUID
 ##  

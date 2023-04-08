@@ -1,6 +1,6 @@
 ##############################################
 ##
-##  CS440 Project 4
+##  CS440 HW6
 ##  
 ##  Important: fill you name and PUID
 ##  
@@ -80,7 +80,7 @@ def process_window(time, rdd):
         python_list = []
 
         # HINT: rdd have many rows, each row only contains one integer
-        #   Sort these integers and extract the largest 10 integers to
+        #   Compute sum and average of these integers and write to
         #   variable $python_list
         ########### TODO Start #####################################
         
