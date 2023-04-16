@@ -57,10 +57,10 @@ def process_global(time, rdd):
 
         ########### TODO Start #####################################
         sort_rdd = row_rdd.first()['global_topk'].sort(reverse=True)
-        for i in range(10):
-            if sort_rdd.count() >= 10:
-                python_list.append(sort_rdd[i])
-            python_list = sort_rdd
+        # for i in range(10):
+        #     if sort_rdd.count() >= 10:
+        #         python_list.append(sort_rdd[i])
+        python_list = sort_rdd[0:10]
 
 
         ########### TODO End ######################################
