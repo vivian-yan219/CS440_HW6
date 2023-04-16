@@ -4,8 +4,8 @@
 ##  
 ##  Important: fill you name and PUID
 ##  
-##  Name:
-##  PUID:
+##  Name: Qingyuan Yan
+##  PUID: 0031503588
 #############################################
 
 from pyspark import SparkConf,SparkContext
@@ -21,9 +21,11 @@ def aggregate_global_topk(new_values, global_topk):
     #HINT: $new_values format is [integer1, integer2 .....]
     #       return values format should also be a integer list
     ########### TODO Start #####################################
+    if global_topk is None:
+        global_topk = []
 
-
-    # Add your implementation here
+    for new_value in new_values:
+        global_topk.append(new_value)
 
 
     ########### TODO End #####################################
@@ -54,12 +56,12 @@ def process_global(time, rdd):
 
 
         ########### TODO Start #####################################
-        
-
-
-
-        # Add your implementation here
-
+        sort_rdd = row_rdd.sortBy(ascending=False)
+        if len(sort_rdd) >= 10:
+            for i in range(10):
+                python_list.append(sort_rdd[i])
+        else:
+            python_list.append(sort_rdd)
 
 
         ########### TODO End ######################################
@@ -83,16 +85,13 @@ def process_window(time, rdd):
         #   Compute sum and average of these integers and write to
         #   variable $python_list
         ########### TODO Start #####################################
-        
+        sum_int = 0
+        for int in rdd:
+            sum_int += int
+        python_list.append(sum_int)
+        avg_int = sum_int / len(rdd)
+        python_list.append(avg_int)
 
-
-
-
-        # Add your implementation here
-
-
-
-        #python_list = YOUR_IMPLEMENTATION
 
         ########### TODO End ######################################
         fd = open("./result/task1.txt", "a")
