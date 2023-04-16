@@ -87,7 +87,7 @@ def process_window(time, rdd):
         ########### TODO Start #####################################
         sum_int = rdd.sum()
         python_list.append(sum_int)
-        avg_int = sum_int / len(rdd)
+        avg_int = sum_int / rdd.count()
         python_list.append(avg_int)
 
 
