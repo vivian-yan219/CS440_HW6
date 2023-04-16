@@ -23,8 +23,8 @@ def aggregate_global_topk(new_values, global_topk):
     ########### TODO Start #####################################
     if not global_topk:
         global_topk = []
-    # if not new_values:
-    #     return global_topk
+    if not new_values:
+        return global_topk
     global_topk += new_values
 
 
@@ -56,8 +56,7 @@ def process_global(time, rdd):
 
 
         ########### TODO Start #####################################
-        get_rdd = row_rdd.first()['global_topk']
-        get_rdd.sort(reverse=True)
+        get_rdd = row_rdd.first()['global_topk'].sort(reverse=True)
         python_list = get_rdd[:10]
 
 
