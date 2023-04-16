@@ -56,7 +56,7 @@ def process_global(time, rdd):
 
 
         ########### TODO Start #####################################
-        get_rdd = row_rdd.first()['global_topk']
+        get_rdd = row_rdd['global_topk']
         sort_rdd = get_rdd.sort(reverse=True)
         python_list = sort_rdd[:10]
 
