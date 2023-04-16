@@ -21,7 +21,7 @@ def aggregate_global_topk(new_values, global_topk):
     #HINT: $new_values format is [integer1, integer2 .....]
     #       return values format should also be a integer list
     ########### TODO Start #####################################
-    if global_topk is None:
+    if not global_topk:
         global_topk = []
 
     for new_value in new_values:
@@ -56,7 +56,7 @@ def process_global(time, rdd):
 
 
         ########### TODO Start #####################################
-        sort_rdd = row_rdd.first()['global_topl'].sort(reverse=True)
+        sort_rdd = row_rdd.first()['global_topk'].sort(reverse=True)
         if len(sort_rdd) >= 10:
             for i in range(10):
                 python_list.append(sort_rdd[i])
@@ -85,10 +85,12 @@ def process_window(time, rdd):
         #   Compute sum and average of these integers and write to
         #   variable $python_list
         ########### TODO Start #####################################
-        sum_int = rdd.sum()
-        python_list.append(sum_int)
-        avg_int = sum_int / rdd.count()
-        python_list.append(avg_int)
+        if not rdd:
+            sum_int = rdd.sum()
+            python_list.append(sum_int)
+
+            avg_int = sum_int / rdd.count()
+            python_list.append(avg_int)
 
 
         ########### TODO End ######################################
