@@ -57,7 +57,7 @@ def process_global(time, rdd):
 
         ########### TODO Start #####################################
         get_rdd = row_rdd.first()['global_topk']
-        sorted(get_rdd, reverse=True)
+        get_rdd.sort(reverse=True)
         python_list = get_rdd[:10]
 
 
@@ -83,12 +83,12 @@ def process_window(time, rdd):
         #   Compute sum and average of these integers and write to
         #   variable $python_list
         ########### TODO Start #####################################
-        if rdd:
-            sum_int = rdd.sum()
-            python_list.append(sum_int)
+        # if rdd:
+        sum_int = rdd.sum()
+        python_list.append(sum_int)
 
-            avg_int = sum_int / rdd.count()
-            python_list.append(avg_int)
+        avg_int = sum_int / rdd.count()
+        python_list.append(avg_int)
 
 
         ########### TODO End ######################################
