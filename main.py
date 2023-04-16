@@ -84,7 +84,7 @@ def process_window(time, rdd):
         #   Compute sum and average of these integers and write to
         #   variable $python_list
         ########### TODO Start #####################################
-        if not rdd:
+        if rdd:
             sum_int = rdd.sum()
             python_list.append(sum_int)
 
